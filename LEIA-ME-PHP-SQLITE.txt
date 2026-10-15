@@ -1,0 +1,26 @@
+COMO EXECUTAR A APLICACAO
+
+1. Instalar PHP 8.1 ou superior com SQLite/PDO SQLite ativo.
+2. Abrir o PowerShell nesta pasta.
+3. Executar:
+
+   php -S localhost:8000
+
+4. Abrir no navegador:
+
+   http://localhost:8000/apoio-plus-melhorado.html
+
+Na primeira abertura, o api.php cria automaticamente o ficheiro apoio-plus.sqlite,
+as tabelas e os dados de demonstração.
+
+FICHEIROS
+
+- apoio-plus-melhorado.html: interface da aplicação.
+- api.php: API PHP que lê e grava no SQLite.
+- apoio-plus.sqlite: base de dados criada automaticamente na primeira execução.
+
+NOTA DE SEGURANCA
+
+Antes de usar dados reais, adicionar autenticação, permissões por utilizador,
+HTTPS, cópias de segurança e medidas de proteção de dados pessoais e de saúde.
+Nunca abrir api.php num alojamento público sem essas proteções.
