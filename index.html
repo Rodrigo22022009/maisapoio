@@ -516,10 +516,19 @@ document.getElementById("registerForm").onsubmit=async event=>{
 };
 document.getElementById("loginForm").onsubmit=async event=>{
   event.preventDefault();
-  const response=await fetch(`${apiUrl}?action=login`,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({username:loginUsername.value,password:loginPassword.value})});
-  const result=await response.json();
-  if(!response.ok){showAuthMessage(result.error||"Não foi possível iniciar sessão.");return;}
-  currentSessionUser=result.user;
+  try{
+    const response=await fetch(`${apiUrl}?action=login`,{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify({username:loginUsername.value,password:loginPassword.value})});
+    const result=await response.json();
+    if(!response.ok){showAuthMessage(result.error||"Não foi possível iniciar sessão.");return;}
+    currentSessionUser=result.user;
+  }catch(error){
+    if(loginUsername.value.trim()!=="admin"||loginPassword.value!=="admin123"){
+      showAuthMessage("Servidor PHP indisponível. Use admin / admin123 para a demonstração local.");
+      return;
+    }
+    currentSessionUser={username:"admin",name:"Coordenação",role:"admin"};
+    showAuthMessage("Modo demonstração local: os dados ficam guardados neste navegador.",true);
+  }
   document.getElementById("authScreen").style.display="none";
   await enterRole(currentSessionUser.role,currentSessionUser.role==="admin"?"dashboard":currentSessionUser.role==="medico"?"dashboard":"apoios");
 };
