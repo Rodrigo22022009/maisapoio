@@ -1,0 +1,32 @@
+COMO EXECUTAR A APLICACAO
+
+1. Instalar PHP 8.1 ou superior com SQLite/PDO SQLite ativo.
+2. Abrir o PowerShell na pasta do projeto.
+3. Executar:
+
+   php -S localhost:8000
+
+4. Abrir no navegador:
+
+   http://localhost:8000/
+
+Na primeira abertura, o backend/api.php cria automaticamente o ficheiro backend/apoio-plus.sqlite,
+as tabelas e os dados de demonstração.
+
+FICHEIROS
+
+- index.html: interface da aplicação e página inicial do GitHub Pages.
+- backend/api.php: API PHP que lê e grava no SQLite.
+- backend/apoio-plus.sqlite: base de dados criada automaticamente na primeira execução.
+
+NOTA SOBRE O GITHUB PAGES
+
+O GitHub Pages serve ficheiros estáticos e não executa PHP. Para usar a aplicação
+com dados partilhados, execute-a num servidor com PHP através do comando acima.
+No GitHub Pages, a interface pode ser consultada em modo local no navegador.
+
+NOTA DE SEGURANCA
+
+Antes de usar dados reais, adicionar autenticação, permissões por utilizador,
+HTTPS, cópias de segurança e medidas de proteção de dados pessoais e de saúde.
+Nunca abrir api.php num alojamento público sem essas proteções.
